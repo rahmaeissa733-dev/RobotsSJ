@@ -1,0 +1,218 @@
+/* ===============================
+   =============================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Cairo", sans-serif;
+  background: #060006;
+  color: #e9d9ff;
+  overflow-x: hidden;
+  direction: rtl; /* RTL للغة العربية */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #2a0040 0%, #000 70%);
+  z-index: -1;
+}
+
+/* شريط القوائم */
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(20,0,30,0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(150,0,200,0.4);
+  padding: 18px 0;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px; /* تقليل المسافة بين الروابط */
+  padding: 8px 0;
+}
+
+nav a {
+  color: #e8c6ff;
+  font-size: 12px; /* خط أصغر قليلاً */
+  font-weight: 600;
+  text-decoration: none;
+  padding: 5px 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+nav a.active, nav a.quiz-nav {
+  background: linear-gradient(45deg, #7a00a8, #b300ff);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(180,0,255,0.6);
+}
+
+/* محتوى الصفحات */
+main {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 70px 0;
+  background: rgba(255,255,255,0.03);
+  border-radius: 18px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(150,0,200,0.2);
+  animation: fadeIn 1s ease;
+  text-align: right;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2 {
+  text-align: center;
+  color: #e7b4ff;
+  text-shadow: 0 0 10px rgba(180,0,255,0.4);
+}
+
+h1 { font-size: 36px; margin-bottom: 15px; }
+h2 { font-size: 28px; margin-top: 40px; }
+
+p {
+  color: #f0e6ff;
+  line-height: 1.9;
+  font-size: 19px;
+  margin-bottom: 25px;
+}
+
+/* الصور والفيديوهات بحجم أصغر */
+img, video {
+  max-width: 50%; /* أصغر من السابق */
+  height: auto;
+  border-radius: 12px;
+  margin: 15px auto;
+  display: block;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+img:hover, video:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 25px rgba(180,0,255,0.8);
+}
+
+/* أزرار */
+.btn, .start-quiz {
+  display: inline-block;
+  margin: 20px auto;
+  padding: 14px 36px;
+  background: linear-gradient(45deg, #7a00a8, #b300ff);
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 14px;
+  box-shadow: 0 0 20px rgba(190,0,255,0.6);
+  transition: 0.3s ease;
+}
+
+.btn:hover, .start-quiz:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 0 30px rgba(220,120,255,0.9);
+}
+
+/* زر العودة للاختبار من صفحة النتيجة */
+.back-quiz {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 28px;
+  background: transparent;
+  color: #e8c6ff;
+  border: 2px solid #b300ff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.back-quiz:hover {
+  background: #b300ff;
+  color: #fff;
+}
+
+/* أزرار السابق / التالي */
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.page-nav a {
+  background: linear-gradient(45deg, #7a00a8, #b300ff);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(180,0,255,0.6);
+  transition: 0.3s;
+}
+
+.page-nav a:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 18px rgba(220,120,255,0.9);
+}
+
+/* صفحة القائمون على المشروع */
+.contributors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 60px;
+  font-size: 1.7em;
+  color: #d9b3ff;
+}
+
+/* صفحة الاختبار */
+.quiz-question { margin-bottom: 22px; }
+
+.quiz-options label {
+  display: block;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.quiz-options label:hover { color: #ff99ff; }
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+  nav { flex-wrap: wrap; gap: 10px; }
+  nav a { font-size: 10px; padding: 4px 6px; }
+  main { width: 95%; padding: 40px 10px; }
+  img, video { max-width: 90%; }
+}
+.dark-mode{
+background:#000 !important;
+color:white !important;
+}

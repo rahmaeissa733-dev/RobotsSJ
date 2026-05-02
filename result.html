@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>نتيجة الاختبار</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>نتيجة الاختبار</header>
+<main>
+    <h2>نتيجتك:</h2>
+    <p id="score" style="text-align:center;font-size:1.5em;font-weight:bold;"></p>
+    <p id="message" style="text-align:center;font-size:1.2em;margin-top:10px;"></p>
+</main>
+
+<script>
+const score = parseInt(localStorage.getItem('quizScore')) || 0;
+const scoreElement = document.getElementById('score');
+const messageElement = document.getElementById('message');
+
+scoreElement.textContent = score + " / 10";
+
+if(score === 10){
+    messageElement.textContent = "ممتاز! أنت خبير في الروبوتات 🎉";
+    messageElement.style.color = "#00ff99";
+} else if(score >= 8){
+    messageElement.textContent = "جيد جدًا! أحسنت، لديك معرفة قوية 👍";
+    messageElement.style.color = "#66ffcc";
+} else if(score >= 5){
+    messageElement.textContent = "جيد! يمكنك التحسين أكثر 💪";
+    messageElement.style.color = "#ffcc00";
+} else{
+    messageElement.textContent = "حاول مرة أخرى! المعرفة تزداد بالتعلم 🌟";
+    messageElement.style.color = "#ff3333";
+}
+</script>
+
+<footer>جميع الحقوق محفوظة &copy; 2025</footer>
+</body>
+</html>
